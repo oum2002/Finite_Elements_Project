@@ -66,7 +66,15 @@ A single nodal constraint is added to remove the singularity associated with the
 ├── mesh.f90           # Mesh reader and utilities
 ├── TP_elas.f90        # Main FEM solver
 ├── MAIL.msh           # Gmsh mesh file
+├── MAIL_2D.msh        
+├── MAIL_3D.msh           
+├── MAIL_4D.msh           
+├── MAIL_5D.msh           
 ├── resu.msh           # FEM results exported to Gmsh
+├── resu_2D.msh
+├── resu_3D.msh
+├── resu_4D.msh
+├── resu_5D.msh        
 └── rapport.pdf        # Final report
 ```
 ---
@@ -110,6 +118,14 @@ Run the solver with:
 
 ```bash
 ./solveur
+```
+For different refinements:
+```bash
+for level in 2D 3D 4D 5D; do
+    cp MAIL_${level}.msh MAIL.msh
+    ./solveur > output_${level}.txt
+    cp resu.msh resu_${level}.msh
+done
 ```
 
 The program generates:
