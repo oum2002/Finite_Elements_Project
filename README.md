@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project presents a finite element implementation of the Saint-Venant torsion problem for a rectangular cross-section.
+This project presents a finite element implementation of the Saint-Venant torsion problem for a rectangular cross-section. 
 
-The objective is to compute the warping function using linear triangular finite elements (CST — Constant Strain Triangle).
+The objective is to compute the warping function using linear triangular finite elements (CST — Constant Strain Triangle). 
 
 The solver is written in Fortran 90 and uses:
 
@@ -20,21 +20,18 @@ The solver is written in Fortran 90 and uses:
 
 For a beam subjected to torsion, the Saint-Venant formulation introduces a scalar warping function:
 
-\[
-\omega(y,z)
-\]
+$$\omega(y,z)$$
 
-defined on the cross-section \(\Omega\).
+defined on the cross-section $\Omega$.
 
 The governing problem is:
 
-\[
+$$
 \begin{cases}
 \Delta \omega = 0 & \text{in } \Omega \\
-\dfrac{\partial \omega}{\partial n}
-= z n_y - y n_z & \text{on } \partial\Omega
+\dfrac{\partial \omega}{\partial n} = z n_y - y n_z & \text{on } \partial\Omega
 \end{cases}
-\]
+$$
 
 This corresponds to a pure Neumann problem.
 
@@ -50,23 +47,13 @@ The domain is discretized using:
 
 For each element:
 
-\[
-K^e = S^e B^T B
-\]
+$$K^e = S^e B^T B$$
 
-\[
-q^e = S^e B^T
-\begin{pmatrix}
--z_c \\
-y_c
-\end{pmatrix}
-\]
+$$q^e = S^e B^T \begin{pmatrix} -z_c \\ y_c \end{pmatrix}$$
 
 The global system is assembled as:
 
-\[
-K \omega = f
-\]
+$$K \omega = f$$
 
 A single nodal constraint is added to remove the singularity associated with the pure Neumann problem.
 
@@ -84,7 +71,6 @@ A single nodal constraint is added to remove the singularity associated with the
 ├── figures/           # Generated plots
 ├── postprocess.py     # Python visualization scripts
 └── rapport.pdf        # Final report
-```
 
 ---
 
