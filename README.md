@@ -71,7 +71,7 @@ A single nodal constraint is added to remove the singularity associated with the
 ├── figures/           # Generated plots
 ├── postprocess.py     # Python visualization scripts
 └── rapport.pdf        # Final report
-
+```
 ---
 
 # Compilation
