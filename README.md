@@ -3,9 +3,10 @@
 ## Overview
 
 This project presents a finite element implementation of the Saint-Venant torsion problem for a rectangular cross-section.
+
 The objective is to compute the warping function using linear triangular finite elements (CST — Constant Strain Triangle).
 
-The solver is written in **Fortran 90** and uses:
+The solver is written in Fortran 90 and uses:
 
 - Linear triangular finite elements (P1/CST)
 - Variational formulation of the Laplace equation
@@ -15,7 +16,7 @@ The solver is written in **Fortran 90** and uses:
 
 ---
 
-## Physical Problem
+# Physical Problem
 
 For a beam subjected to torsion, the Saint-Venant formulation introduces a scalar warping function:
 
@@ -39,7 +40,7 @@ This corresponds to a pure Neumann problem.
 
 ---
 
-## Numerical Method
+# Numerical Method
 
 The domain is discretized using:
 
@@ -71,7 +72,7 @@ A single nodal constraint is added to remove the singularity associated with the
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```text
 .
@@ -87,7 +88,7 @@ A single nodal constraint is added to remove the singularity associated with the
 
 ---
 
-## Compilation
+# Compilation
 
 The code requires:
 
@@ -111,7 +112,7 @@ gfortran mesh.f90 fem.f90 TP_elas.f90 -llapack -lopenblas -o solveur
 
 ---
 
-## Execution
+# Execution
 
 Run the solver with:
 
@@ -133,7 +134,7 @@ containing:
 
 ---
 
-## Visualization
+# Visualization
 
 Results can be visualized using:
 
@@ -162,7 +163,7 @@ Generated figures include:
 
 ---
 
-## Main Results
+# Main Results
 
 The numerical solution reproduces the expected behavior:
 
@@ -173,10 +174,9 @@ The numerical solution reproduces the expected behavior:
 
 ---
 
-## Author
+# Author
 
 **Oumkalthoum M'HAMDI**
 
-Finite Element Methods Project
+Finite Element Methods Project  
 Academic Year 2024–2025
-
