@@ -64,12 +64,9 @@ A single nodal constraint is added to remove the singularity associated with the
 ```text
 .
 ├── mesh.f90           # Mesh reader and utilities
-├── fem.f90            # Linear algebra routines (LAPACK)
 ├── TP_elas.f90        # Main FEM solver
 ├── MAIL.msh           # Gmsh mesh file
 ├── resu.msh           # FEM results exported to Gmsh
-├── figures/           # Generated plots
-├── postprocess.py     # Python visualization scripts
 └── rapport.pdf        # Final report
 ```
 ---
@@ -82,18 +79,27 @@ The code requires:
 - LAPACK
 - BLAS/OpenBLAS
 
-Example compilation:
+Compilation:
+
 
 ```bash
-gfortran mesh.f90 fem.f90 TP_elas.f90 -llapack -lblas -o solveur
+gfortran -c mesh.f90
+gfortran -c TP_elas.f90
+gfortran mesh.f90 TP_elas.f90 -llapack -lblas -o solveur
+
+```
+Or:
+```bash
+gfortran *.f90 -llapack -lopenblas -o solveur
 ```
 
 On HPC clusters using modules:
 
 ```bash
 module load OpenBLAS
-
-gfortran mesh.f90 fem.f90 TP_elas.f90 -llapack -lopenblas -o solveur
+gfortran -c mesh.f90
+gfortran -c TP_elas.f90
+gfortran *.f90 -llapack -lopenblas -o solveur
 ```
 
 ---
@@ -117,35 +123,6 @@ containing:
 - mesh
 - nodal values of the warping function
 - FEM solution exported in Gmsh format
-
----
-
-# Visualization
-
-Results can be visualized using:
-
-- Gmsh
-- Python (meshio + matplotlib)
-
-Install Python dependencies:
-
-```bash
-pip install meshio matplotlib numpy
-```
-
-Example:
-
-```bash
-python postprocess.py
-```
-
-Generated figures include:
-
-- Mesh visualization
-- 2D warping contours
-- 3D warping surface
-- Shear stress fields
-- 1D profiles
 
 ---
 
